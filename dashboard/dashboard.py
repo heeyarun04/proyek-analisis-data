@@ -46,7 +46,7 @@ ax.legend()
 ax.grid(True)
 st.pyplot(fig)
 
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 plt.figure(figsize=(8, 4))
 plt.plot(monthly_avg_pm25['date'], monthly_avg_pm25['PM2.5'], marker='o')
 plt.xlabel('Month')
@@ -60,7 +60,7 @@ st.markdown("""
 ## Nilai Polutan di Setiap Stasiun
 """)
 plt.figure(figsize=(8, 6))
-merged_df = all_data[['PM2.5', 'NO2', 'SO2', 'O3', 'PM10', 'CO', 'station']].copy()
+merged_df = all_df[['PM2.5', 'NO2', 'SO2', 'O3', 'PM10', 'CO', 'station']].copy()
 ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='value', y='station', hue='variable', orient='h')
 plt.xlabel('Nilai Polutan')
 plt.ylabel('Stasiun')
