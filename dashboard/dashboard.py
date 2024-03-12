@@ -26,9 +26,11 @@ st.markdown("""
 - **Name**: Hiyarunnisa Kahes Waypi
 - **Email Address**: yarun.kawa@gmail.com
 - **Dicoding ID**: [Hyarun](https://www.dicoding.com/users/heeyarun/)
+""")
 
-###1. Bagaimana tren tingkat polutan dari tahun ke tahun?
-st.subheader('Average PM2.5 Distribution per Month (2013-2017)')
+st.markdown("""
+##1. Bagaimana tren tingkat polutan dari tahun ke tahun?
+###Average PM2.5 Distribution per Month (2013-2017)""")
 fig, ax = plt.subplots(figsize=(12, 6))
 for station, station_data in all_df.groupby('station'):
     filtered_data = station_data[(station_data['year'] >= 2013) & (station_data['year'] <= 2017)]
@@ -43,7 +45,9 @@ ax.legend()
 ax.grid(True)
 st.pyplot(fig)
 
-###2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?
+st.markdown("""
+##2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?
+""")
 st.title('Nilai Polutan di Setiap Stasiun')
 plt.figure(figsize=(12, 8))
 ax = sns.barplot(data=all_df.melt(id_vars='station'), x='value', y='station', hue='variable', orient='h')
