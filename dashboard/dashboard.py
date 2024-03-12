@@ -46,14 +46,6 @@ ax.legend()
 ax.grid(True)
 st.pyplot(fig)
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-plt.figure(figsize=(8, 4))
-plt.plot(monthly_avg_pm25['date'], monthly_avg_pm25['PM2.5'], marker='o')
-plt.xlabel('Month')
-plt.ylabel('Average PM2.5')
-plt.xticks(rotation=45)
-plt.grid(True)
-st.pyplot()
 
 st.title('2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?')
 st.markdown("""
@@ -61,9 +53,9 @@ st.markdown("""
 """)
 plt.figure(figsize=(8, 6))
 merged_df = all_df[['PM2.5', 'NO2', 'SO2', 'O3', 'PM10', 'CO', 'station']].copy()
-ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='value', y='station', hue='variable')
-plt.xlabel('Nilai Polutan')
-plt.ylabel('Stasiun')
+ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='station', y='value', hue='variable')
+plt.xlabel('Stasiun')
+plt.ylabel('Nilai Polutan')
 plt.legend(title='Polutan')
 for p in ax.patches:
     width = p.get_width()  # Get the width of the bar
