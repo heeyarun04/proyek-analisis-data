@@ -57,6 +57,7 @@ ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='value', y='station',
 plt.xlabel('Nilai Polutan')
 plt.ylabel('Stasiun')
 plt.legend(title='Polutan')
+
 for p in ax.patches:
     width = p.get_width()  # Get the width of the bar
     height = p.get_height()  # Get the height of the bar
