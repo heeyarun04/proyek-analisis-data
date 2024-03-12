@@ -18,7 +18,7 @@ st.set_page_config(
 st.title('Air Quality Analysis Dashboard :sparkles:')
 
 # Load dataset
-all_df = pd.read_csv('all_data.csv')
+all_df = pd.read_csv('./dashboard/all_data.csv')
 
 # About me
 st.markdown("""
