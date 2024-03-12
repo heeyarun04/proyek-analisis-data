@@ -31,6 +31,7 @@ st.markdown("""
 st.markdown("""
 ##1. Bagaimana tren tingkat polutan dari tahun ke tahun?
 ###Average PM2.5 Distribution per Month (2013-2017)""")
+
 fig, ax = plt.subplots(figsize=(12, 6))
 for station, station_data in all_df.groupby('station'):
     filtered_data = station_data[(station_data['year'] >= 2013) & (station_data['year'] <= 2017)]
@@ -44,6 +45,15 @@ ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 ax.legend()
 ax.grid(True)
 st.pyplot(fig)
+
+st.title('Average PM2.5 Distribution per Month (2013-2017)')
+plt.figure(figsize=(12, 6))
+plt.plot(monthly_avg_pm25['date'], monthly_avg_pm25['PM2.5'], marker='o')
+plt.xlabel('Month')
+plt.ylabel('Average PM2.5')
+plt.xticks(rotation=45)
+plt.grid(True)
+st.pyplot()
 
 st.markdown("""
 ##2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?
