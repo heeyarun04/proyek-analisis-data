@@ -20,9 +20,6 @@ st.title('Air Quality Analysis Dashboard :sparkles:')
 # Load dataset
 all_df = pd.read_csv('all_data.csv')
 
-# Adding a sidebar for interactive inputs
-st.sidebar.header('User Input Features')
-
 # About me
 st.markdown("""
 ### About Me
@@ -31,7 +28,6 @@ st.markdown("""
 - **Dicoding ID**: [Hyarun](https://www.dicoding.com/users/heeyarun/)
 
 ###1. Bagaimana tren tingkat polutan dari tahun ke tahun?
-
 st.subheader('Average PM2.5 Distribution per Month (2013-2017)')
 fig, ax = plt.subplots(figsize=(12, 6))
 for station, station_data in all_df.groupby('station'):
@@ -46,3 +42,28 @@ ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 ax.legend()
 ax.grid(True)
 st.pyplot(fig)
+
+###2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?
+st.title('Nilai Polutan di Setiap Stasiun')
+plt.figure(figsize=(12, 8))
+ax = sns.barplot(data=all_df.melt(id_vars='station'), x='value', y='station', hue='variable', orient='h')
+plt.xlabel('Nilai Polutan')
+plt.ylabel('Stasiun')
+plt.legend(title='Polutan')
+for p in ax.patches:
+    width = p.get_width()  # Get the width of the bar
+    height = p.get_height()  # Get the height of the bar
+    x, y = p.get_xy()  # Get the initial x and y coordinates
+    if width > 0.1:  # Add text only if the width of the bar is greater than 0.1
+        plt.annotate(f'{width:.2f}',
+                     (x + width, y + height),
+                     xytext=(5, 6),
+                     textcoords='offset points',
+                     ha='left',
+                     va='center',
+                     fontsize=8)
+st.pyplot(plt)
+
+###Kesimpulan
+st.write('1. Dari tahun 2013 hingga 2017 awal mengalami fluktuasi naik turun. Ini bisa disebabkan oleh faktor-faktor seperti perubahan dalam aktivitas industri atau transportasi, cuaca ekstrem, atau kegagalan dalam penerapan kebijakan pengendalian emisi')
+st.write('2. Wanliu mempunyai polutan yang paling tinggi dan Dingling mempunyai polutan paling rendah, meskipun nilai ozon di Wanliu paling rendah')
