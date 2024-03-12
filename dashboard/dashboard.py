@@ -65,5 +65,8 @@ for p in ax.patches:
 st.pyplot(plt)
 
 ###Kesimpulan
-st.write('1. Dari tahun 2013 hingga 2017 awal mengalami fluktuasi naik turun. Ini bisa disebabkan oleh faktor-faktor seperti perubahan dalam aktivitas industri atau transportasi, cuaca ekstrem, atau kegagalan dalam penerapan kebijakan pengendalian emisi')
-st.write('2. Wanliu mempunyai polutan yang paling tinggi dan Dingling mempunyai polutan paling rendah, meskipun nilai ozon di Wanliu paling rendah')
+kesimpulan='''
+1. Dari tahun 2013 hingga 2017 awal mengalami fluktuasi naik turun. Ini bisa disebabkan oleh faktor-faktor seperti perubahan dalam aktivitas industri atau transportasi, cuaca ekstrem, atau kegagalan dalam penerapan kebijakan pengendalian emisi')
+2. Wanliu mempunyai polutan yang paling tinggi dan Dingling mempunyai polutan paling rendah, meskipun nilai ozon di Wanliu paling rendah
+'''
+st.markdown(kesimpulan)
