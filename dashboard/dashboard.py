@@ -57,7 +57,7 @@ st.pyplot()
 
 st.title('2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?')
 st.markdown("""
-## Nilai Polutan di Setiap Stasiun
+### Nilai Polutan di Setiap Stasiun
 """)
 plt.figure(figsize=(8, 6))
 merged_df = all_df[['PM2.5', 'NO2', 'SO2', 'O3', 'PM10', 'CO', 'station']].copy()
@@ -72,7 +72,7 @@ for p in ax.patches:
     if width > 0.1:  # Add text only if the width of the bar is greater than 0.1
         plt.annotate(f'{width:.2f}',
                      (x + width, y + height),
-                     xytext=(5, 6),
+                     xytext=(4, 5),
                      textcoords='offset points',
                      ha='left',
                      va='center',
@@ -80,7 +80,7 @@ for p in ax.patches:
 st.pyplot(plt)
 
 st.markdown("""
-###Kesimpulan
+### Kesimpulan
 1. Dari tahun 2013 hingga 2017 awal mengalami fluktuasi naik turun. Ini bisa disebabkan oleh faktor-faktor seperti perubahan dalam aktivitas industri atau transportasi, cuaca ekstrem, atau kegagalan dalam penerapan kebijakan pengendalian emisi')
 2. Wanliu mempunyai polutan yang paling tinggi dan Dingling mempunyai polutan paling rendah, meskipun nilai ozon di Wanliu paling rendah
 """)
