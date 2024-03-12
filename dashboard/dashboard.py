@@ -61,7 +61,7 @@ st.markdown("""
 """)
 plt.figure(figsize=(8, 6))
 merged_df = all_df[['PM2.5', 'NO2', 'SO2', 'O3', 'PM10', 'CO', 'station']].copy()
-ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='value', y='station', hue='variable', orient='h')
+ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='value', y='station', hue='variable')
 plt.xlabel('Nilai Polutan')
 plt.ylabel('Stasiun')
 plt.legend(title='Polutan')
