@@ -28,11 +28,11 @@ st.markdown("""
 - **Dicoding ID**: [Hyarun](https://www.dicoding.com/users/heeyarun/)
 """)
 
-st.markdown("""
-##1. Bagaimana tren tingkat polutan dari tahun ke tahun?
-###Average PM2.5 Distribution per Month (2013-2017)""")
 
-fig, ax = plt.subplots(figsize=(12, 6))
+st.title('1. Bagaimana tren tingkat polutan dari tahun ke tahun?')
+st.markdown("""
+### Average PM2.5 Distribution per Month (2013-2017)""")
+fig, ax = plt.subplots(figsize=(8, 4))
 for station, station_data in all_df.groupby('station'):
     filtered_data = station_data[(station_data['year'] >= 2013) & (station_data['year'] <= 2017)]
     monthly_avg_pm25 = filtered_data.groupby(['year', 'month'])['PM2.5'].mean().reset_index()
@@ -46,8 +46,8 @@ ax.legend()
 ax.grid(True)
 st.pyplot(fig)
 
-st.title('Average PM2.5 Distribution per Month (2013-2017)')
-plt.figure(figsize=(12, 6))
+
+plt.figure(figsize=(8, 4))
 plt.plot(monthly_avg_pm25['date'], monthly_avg_pm25['PM2.5'], marker='o')
 plt.xlabel('Month')
 plt.ylabel('Average PM2.5')
@@ -55,12 +55,13 @@ plt.xticks(rotation=45)
 plt.grid(True)
 st.pyplot()
 
+st.title('2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?')
 st.markdown("""
-##2. Wilayah mana yang memiliki indeks kualitas udara terbaik dan wilayah mana yang terburuk?
+## Nilai Polutan di Setiap Stasiun
 """)
-st.title('Nilai Polutan di Setiap Stasiun')
-plt.figure(figsize=(12, 8))
-ax = sns.barplot(data=all_df.melt(id_vars='station'), x='value', y='station', hue='variable', orient='h')
+plt.figure(figsize=(8, 6))
+merged_df = all_data[['PM2.5', 'NO2', 'SO2', 'O3', 'PM10', 'CO', 'station']].copy()
+ax = sns.barplot(data=merged_df.melt(id_vars='station'), x='value', y='station', hue='variable', orient='h')
 plt.xlabel('Nilai Polutan')
 plt.ylabel('Stasiun')
 plt.legend(title='Polutan')
